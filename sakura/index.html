@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Falling Sakura</title>
+  <style>
+    body {
+      margin: 0;
+      overflow: hidden;
+      background-color: #070707;
+    }
+
+    .sakura {
+      position: absolute;
+      background-image: url('https://emojicdn.elk.sh/🌸');
+      background-size: contain;
+      width: 20px;
+      height: 20px;
+      animation: falling 5s linear infinite;
+    }
+
+    @keyframes falling {
+      0% {
+        transform: translateY(-100vh) rotateZ(0deg);
+      }
+
+      100% {
+        transform: translateY(100vh) rotateZ(360deg);
+      }
+    }
+
+    .sakura:nth-child(1) {
+      left: 5%;
+      animation-delay: 0s;
+    }
+
+    .sakura:nth-child(2) {
+      left: 25%;
+      animation-delay: 1s;
+    }
+
+    .sakura:nth-child(3) {
+      left: 25%;
+      animation-delay: 2s;
+    }
+
+    /* Add more .sakura elements as needed */
+  </style>
+</head>
+
+<body>
+  <div class="sakura"></div>
+  <div class="sakura"></div>
+  <div class="sakura"></div>
+  <!-- Add more .sakura elements as needed -->
+</body>
+
+</html>

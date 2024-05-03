@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculator</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f0f0;
+    }
+
+    .calculator {
+      width: 300px;
+      margin: 50px auto;
+      border: 2px solid #333;
+      border-radius: 10px;
+      background-color: #000;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+      padding: 20px;
+      display: grid;
+      grid-gap: 10px;
+      grid-template-columns: repeat(4, 1fr);
+      grid-auto-rows: minmax(50px, auto);
+    }
+
+    .button {
+      padding: 15px;
+      font-size: 18px;
+      background-color: #ffcc00;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s, transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 4px #666;
+      background-image: linear-gradient(45deg, #ffcc00, #ffb300);
+    }
+
+    .button:hover {
+      background-color: #ffd633;
+      transform: translateY(-2px);
+      box-shadow: 0 8px #666;
+      background-image: linear-gradient(45deg, #ffd633, #ffcc00);
+    }
+
+    .button:active {
+      transform: translateY(2px);
+      box-shadow: none;
+    }
+
+    .clear {
+      grid-column: span 4;
+      background-color: #FF8C00;
+    }
+
+    .equals {
+      grid-column: span 4;
+    }
+
+    #display {
+      grid-column: span 4;
+      padding: 10px;
+      font-size: 24px;
+      text-align: right;
+      border: none;
+      border-bottom: 2px solid #333;
+      border-radius: 5px;
+      outline: none;
+      background-color: #000;
+      color: #fff;
+    }
+
+    .plus {
+      grid-column: 4;
+    }
+  </style>
+</head>
+<body>
+  <div class="calculator">
+    <input type="text" id="display" readonly>
+    <button class="button clear" onclick="clearDisplay()">C</button>
+    <button class="button" onclick="addToDisplay('7')">7</button>
+    <button class="button" onclick="addToDisplay('8')">8</button>
+    <button class="button" onclick="addToDisplay('9')">9</button>
+    <button class="button plus" onclick="addToDisplay('+')">+</button>
+    <button class="button" onclick="addToDisplay('4')">4</button>
+    <button class="button" onclick="addToDisplay('5')">5</button>
+    <button class="button" onclick="addToDisplay('6')">6</button>
+    <button class="button" onclick="addToDisplay('-')">-</button>
+    <button class="button" onclick="addToDisplay('1')">1</button>
+    <button class="button" onclick="addToDisplay('2')">2</button>
+    <button class="button" onclick="addToDisplay('3')">3</button>
+    <button class="button" onclick="addToDisplay('*')">*</button>
+    <button class="button" onclick="addToDisplay('0')">0</button>
+    <button class="button" onclick="addToDisplay('.')">.</button>
+    <button class="button" onclick="addToDisplay('/')">÷</button>
+    <button class="button" onclick="addToDisplay('%')">%</button>
+    <button class="button equals" onclick="calculateResult()">=</button>
+  </div>
+  <script>
+    function addToDisplay(value) {
+      document.getElementById('display').value += value;
+    }
+
+    function clearDisplay() {
+      document.getElementById('display').value = '';
+    }
+
+    function calculateResult() {
+      try {
+        let result = eval(document.getElementById('display').value);
+        document.getElementById('display').value = result;
+      } catch (error) {
+        document.getElementById('display').value = 'Error';
+      }
+    }
+  </script>
+</body>
+</html>
+

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Snowfall with Tree</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    
+    html, body {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      background-color: #87CEEB; /
+    }
+    
+    canvas {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  
+  <canvas id="canvas"></canvas>
+  <script>
+    const canvas = document.getElementById('canvas');
+    const ctx = canvas.getContext('2d');
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    class Snowflake {
+      constructor() {
+        this.x = Math.random() * canvas.width;
+        this.y = Math.random() * canvas.height;
+        this.radius = Math.random() * 3 + 1;
+        this.speed = Math.random() * 3 + 1;
+      }
+
+      update() {
+        this.y += this.speed;
+        if (this.y > canvas.height) {
+          this.y = 0;
+          this.x = Math.random() * canvas.width;
+        }
+      }
+
+      draw() {
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+        ctx.fillStyle = 'white';
+        ctx.fill();
+      }
+    }
+
+    const flakes = [];
+    const numberOfFlakes = 100;
+
+    for (let i = 0; i < numberOfFlakes; i++) {
+      flakes.push(new Snowflake());
+    }
+
+    function drawTree() {
+      ctx.beginPath();
+      ctx.moveTo(50, canvas.height);
+      ctx.lineTo(0, canvas.height - 50);
+      ctx.lineTo(50, canvas.height - 50);
+      ctx.lineTo(50, canvas.height - 250);
+      ctx.lineTo(00, canvas.height - 50);
+      ctx.lineTo(50, canvas.height - 0);
+      ctx.lineTo(00, canvas.height - 00);
+      ctx.closePath();
+      ctx.fillStyle = '#8B4515'; // Коричневый цвет ствола дерева
+      ctx.fill();
+      
+      ctx.beginPath();
+      ctx.arc(29, canvas.height - 210, 70, 0, Math.PI * 2);
+      ctx.fillStyle = '#228B22'; // Зеленый цвет листвы
+      ctx.fill();
+    }
+
+    function animate() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      flakes.forEach(flake => {
+        flake.update();
+        flake.draw();
+      });
+      drawTree();
+      requestAnimationFrame(animate);
+    }
+
+    animate();
+  </script>
+</body>
+</html>
+

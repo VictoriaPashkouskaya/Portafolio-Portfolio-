@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Bee and Flowers</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    
+    html, body {
+      margin: 0;
+      min-height: 100vh;
+      overflow: hidden;
+      background-image: linear-gradient(black, black, black, rgb(45, 0, 0));
+      touch-action: none;
+    }
+    
+    canvas {
+      width: 100%;
+      height: auto;
+      object-fit: contain;
+    }
+    
+    .wrapper {
+      position: absolute;
+      opacity: .8;
+      width: 100%;
+      height: 100%;
+      left: 0%;
+      top: 0%;
+      background-color: ;
+      background-size: cover;
+      backdrop-filter: brightness(50%);
+    }
+    
+    .wrapper .reflection {
+      position: absolute;
+      left: 50%;
+      top: 50vh;
+      height: .1%;
+      width: .1%;
+      background: transparent;
+      border-radius: 50%;
+      opacity: .1;
+      box-shadow: 0px 0px 400px 200px blue;
+    }
+    
+    /* For Desktop screens */
+    #particles-js {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      -webkit-animation: rotate infinite;
+      animation-duration: 500s;
+      animation-delay: 0s;
+    }
+
+    /* For mobile screens */
+    @media (max-width: 768px) {
+      #particles-js {
+        height: 50%;
+      }
+    }
+  </style>
+</head>
+<body>
+  
+  <canvas id="canvas"></canvas>
+  <div class="wrapper">
+    <div class="reflection"></div>
+    <div id="particles-js"></div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+  <script>
+    particlesJS("particles-js", {
+      "particles": {
+        "number": {
+          "value": 900,
+          "density": {
+            "enable": true,
+            "value_area": 789.1476416322727
+          }
+        },
+        "color": {
+          "value": ["#ffff00", "#ffcc00", "#ff9900"]
+        },
+        "shape": {
+          "type": "circle",
+          "stroke": {
+            "width": 0,
+            "color": "#000000"
+          }
+        },
+        "opacity": {
+          "value": 1,
+          "random": true,
+          "anim": {
+            "enable": true,
+            "speed": 2,
+            "opacity_min": 1,
+            "sync": false
+          }
+        },
+        "size": {
+          "value": 2,
+          "random": true,
+          "anim": {
+            "enable": true,
+            "speed": 1,
+            "size_min": 0,
+            "sync": false
+          }
+        },
+        "line_linked": {
+          "enable": false
+        },
+        "move": {
+          "enable": true,
+          "speed": 5,
+          "direction": "none",
+          "random": true,
+          "straight": false,
+          "out_mode": "out",
+          "bounce": false
+        }
+      },
+      "interactivity": {
+        "events": {
+          "onhover": {
+            "enable": false,
+            "mode": "repulse"
+          }
+        },
+        "modes": {
+          "repulse": {
+            "distance": 100,
+            "duration": 0.4
+          }
+        }
+      }
+    });
+  </script>
+</body>
+</html>
